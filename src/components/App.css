@@ -1,0 +1,29 @@
+.menu-root {
+  background-color: rgba(33, 52, 72, 1);
+  align-content: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+h1 {
+  text-align: center;
+  color: wheat;
+  margin: 0 0 100px 0;
+  font-family: "Pixelify Sans", sans-serif;
+}
+
+p {
+  text-align: center;
+  color: wheat;
+  opacity: 70%;
+  font-family: "Pixelify Sans", sans-serif;
+}
+
+.container-grid {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
+  gap: 100px;
+  width: fit-content;
+  margin: auto;
+}
