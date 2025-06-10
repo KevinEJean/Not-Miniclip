@@ -1,0 +1,191 @@
+/* Common Styles */
+.text-black {
+  color: black;
+}
+
+.flex-column-center-gap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 100px;
+  height: 100%;
+}
+
+.grid-center-rows {
+  display: grid;
+  grid-template-rows: 300px auto auto;
+  height: 100%;
+  align-content: center;
+}
+
+.h1-large {
+  font-size: 25px;
+  margin: 5px;
+}
+
+.h1-medium {
+  font-size: 20px;
+  margin: 5px;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.text-red {
+  color: red;
+}
+
+.text-white {
+  color: white;
+}
+
+.text-blue {
+  color: blue;
+}
+
+.feedback-button {
+  height: 200px;
+  margin: 20px;
+  font-size: 30px;
+}
+
+.debug-message {
+  color: black;
+}
+
+.popup-info {
+  color: black;
+  margin: auto;
+}
+
+/* Customize tab styles */
+.customize-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 150px;
+  height: 100%;
+}
+
+.customize-label {
+  display: inline-block;
+  color: black;
+  font-size: 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+  margin: 15px;
+  transition: color 0.3s ease;
+}
+
+.customize-label:hover {
+  color: white;
+}
+
+#skinURL {
+  display: none;
+}
+
+#skinCancel {
+  height: 200px;
+  margin: 20px;
+  font-size: 30px;
+}
+
+.default-message {
+  color: black;
+}
+
+.music-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.music-header {
+  font-size: 40px;
+  color: black;
+}
+
+.music-player-ui {
+  margin: 5px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.music-button-grid {
+  display: grid;
+  grid-template-columns: 100px 100px 100px;
+  justify-content: center;
+  gap: 10px;
+}
+
+.music-button-grid button {
+  padding: 10px;
+}
+
+.music-button-grid button:hover {
+  border: 2px solid black;
+}
+
+.music-button-grid button.pressed {
+  border: 3px solid black;
+  background-color: darkgray;
+}
+
+.music-button-grid button input {
+  display: none;
+}
+
+.music-button-grid .volume {
+  grid-column: 1 / span 3;
+}
+
+.music-button-grid .volume #volume-slider {
+  width: 100%;
+}
+
+.music-button-grid .playlist {
+  grid-column: 1 / span 3;
+  color: black;
+  font-size: 30px;
+  text-align: center;
+}
+
+/* Profil tab styles */
+.profil-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.profil-container .profil-label {
+  margin: 50px 0 0 0;
+}
+
+.profil-container .profil-input {
+  margin: 10px;
+  padding: 10px;
+}
+
+.profil-container .profil-btn {
+  margin: auto;
+  margin-top: 10px;
+  width: fit-content;
+  color: green;
+  background-color: transparent;
+  border: 0;
+  font-size: 30px;
+  transition: 0.5s;
+}
+
+.profil-container .profil-btn:hover {
+  scale: 1.1;
+  text-decoration: underline;
+  transition: 0.2s;
+}
+
+.profil-container .profil-btn:active {
+  color: red;
+}
