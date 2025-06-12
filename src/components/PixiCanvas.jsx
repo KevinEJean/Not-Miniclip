@@ -39,7 +39,7 @@ const PixiCanvas = ({ castContext, characterSkin }) => {
   // enemie
   const [enemies, setEnemies] = React.useState([]);
   const [enemySpeed, setEnemySpeed] = React.useState(2);
-  const [spawnRate, setSpawnRate] = React.useState(3000);
+  var spawnRate = 3250;
   // statut du jeux
   const [gameStart, setGameStart] = React.useState(false);
   const [gameOver, setGameOver] = React.useState(false);
@@ -101,6 +101,7 @@ const PixiCanvas = ({ castContext, characterSkin }) => {
 
 
     var tempSpeedFix = enemySpeed;
+
     // Game Loop
     app.ticker.add(() => {
 
@@ -137,12 +138,14 @@ const PixiCanvas = ({ castContext, characterSkin }) => {
                 // Augmenté le score et la difficulté
                 setScore((prevScore) => {
                   const newScore = prevScore + 5;
+
+                  if (newScore % 5 === 0 && spawnRate > 750) {
+                    tempSpeedFix += 0.5;
+                    spawnRate -= 250;
+                  }
+
                   return newScore;
                 });
-
-                if (score % 5 === 0) {
-                  tempSpeedFix += 0.5;
-                }
               }
             });
           }
@@ -311,7 +314,7 @@ const PixiCanvas = ({ castContext, characterSkin }) => {
     };
   }, []);
 
-  // Action du jeux
+  // Contrôle du jeux
   React.useEffect(() => {
     const handleKeyDown = (event) => {
       const user = characterSpriteRef.current;
@@ -335,6 +338,14 @@ const PixiCanvas = ({ castContext, characterSkin }) => {
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [handleShoot, userPosY]);
+
+  // Ajustement de difficulté
+  React.useEffect(() => {
+    if (score % 5 === 0) {
+      spawnRate -= 250;
+      console.log(spawnRate, score);
+    }
+  }, [spawnRate]);
 
 
   // Recois action du controlleur
