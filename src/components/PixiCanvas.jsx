@@ -9,7 +9,7 @@ import showJumpscare from './util/navbar/Jumpscare.jsx';
 
 ###################################### TO DO ######################################
 
-- speed & rate updating per kill
+- rate updating per kill (works but not how i tought it would?)
 - fix sounds
 
 */
@@ -39,7 +39,7 @@ const PixiCanvas = ({ castContext, characterSkin }) => {
   // enemie
   const [enemies, setEnemies] = React.useState([]);
   const [enemySpeed, setEnemySpeed] = React.useState(2);
-  var spawnRate = 3250;
+  const [spawnRate, setSpawnRate] = React.useState(3250);
   // statut du jeux
   const [gameStart, setGameStart] = React.useState(false);
   const [gameOver, setGameOver] = React.useState(false);
@@ -59,6 +59,8 @@ const PixiCanvas = ({ castContext, characterSkin }) => {
     const app = pixiAppRef.current;
     setGameStart(true);
     setScore(0);
+    var tempSpeedFix = enemySpeed;
+    var tempSpawnFix = spawnRate;
 
     // Personnage
     PIXI.Assets.load(characterSkin).then((texture) => {
@@ -88,7 +90,7 @@ const PixiCanvas = ({ castContext, characterSkin }) => {
     // 'Spawn rate' des enemies
     const enemySpawnInterval = setInterval(() => {
       spawnEnemy();
-    }, spawnRate);
+    }, tempSpawnFix);
 
     // Ligne
     const line = new PIXI.Graphics();
@@ -100,7 +102,6 @@ const PixiCanvas = ({ castContext, characterSkin }) => {
 
 
 
-    var tempSpeedFix = enemySpeed;
 
     // Game Loop
     app.ticker.add(() => {
@@ -139,9 +140,11 @@ const PixiCanvas = ({ castContext, characterSkin }) => {
                 setScore((prevScore) => {
                   const newScore = prevScore + 5;
 
-                  if (newScore % 5 === 0 && spawnRate > 750) {
+                  if (newScore % 5 === 0) {
                     tempSpeedFix += 0.5;
-                    spawnRate -= 250;
+                    if (tempSpawnFix > 500) {
+                      tempSpawnFix -= 250;
+                    }
                   }
 
                   return newScore;
@@ -337,16 +340,7 @@ const PixiCanvas = ({ castContext, characterSkin }) => {
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [handleShoot, userPosY]);
-
-  // Ajustement de difficulté
-  React.useEffect(() => {
-    if (score % 5 === 0) {
-      spawnRate -= 250;
-      console.log(spawnRate, score);
-    }
-  }, [spawnRate]);
-
+  }, [handleShoot]);
 
   // Recois action du controlleur
   React.useEffect(() => {
