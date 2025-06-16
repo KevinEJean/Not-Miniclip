@@ -35,7 +35,6 @@ const PixiCanvas = ({ castContext, characterSkin }) => {
   // balle
   const [bulletSpeed, setBulletSpeed] = React.useState(2);
   const [canShoot, setCanShoot] = React.useState(true);
-  const shootSound = new Audio('/sounds/shoot.mp3');
   // enemie
   const [enemies, setEnemies] = React.useState([]);
   const [enemySpeed, setEnemySpeed] = React.useState(2);
@@ -43,7 +42,9 @@ const PixiCanvas = ({ castContext, characterSkin }) => {
   // statut du jeux
   const [gameStart, setGameStart] = React.useState(false);
   const [gameOver, setGameOver] = React.useState(false);
-  const gameOverSound = new Audio('/sounds/gameOver.mp3');
+  // audio
+  const shootAudio = new Audio('/sounds/shoot.mp3');
+  const gameOverAudio = new Audio('/sounds/gameOver.mp3');
   // map
   const numberOfTrees = (Math.random() * 10) + 5;   // 'Spawn rate' des arbres
   const numberOfChampi = (Math.random() * 20) + 10; // 'Spawn rate' des champignons
@@ -173,7 +174,8 @@ const PixiCanvas = ({ castContext, characterSkin }) => {
             setGameOver(true);
             setEnemySpeed(0);
             clearInterval(enemySpawnInterval);
-            // gameOverSound.play();
+            gameOverAudio.play();
+            // gameOverAudio.pause();
             return false;
           }
 
@@ -199,7 +201,8 @@ const PixiCanvas = ({ castContext, characterSkin }) => {
       bulletsRef.current.push(bullet);
       app.stage.addChild(bullet);
 
-      // shootSound.play();
+      shootAudio.play();
+      shootAudio.pause();
       setCanShoot(false);
       setTimeout(() => setCanShoot(true), 600); // Cooldown
     }
