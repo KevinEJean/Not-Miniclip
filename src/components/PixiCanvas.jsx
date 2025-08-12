@@ -4,6 +4,7 @@ import startTranslations from './util/other/Translations.jsx';
 import './menu/MainMenu.css';
 import Container from './menu/Container.jsx';
 import showJumpscare from './util/navbar/Jumpscare.jsx';
+import ChessCanvas from './ChessCanvas.jsx';
 
 /*
 
@@ -407,11 +408,11 @@ const PixiCanvas = ({ castContext, characterSkin }) => {
 
   return (
     <>
-      <div id='menu-root' style={{ display: isClickedGame1 ? 'none' : 'initial', backgroundColor: 'rgba(33, 52, 72, 1)', alignContent: 'center', width: '100vw', height: '100vh' }}>
+      <div id='menu-root' style={{ display: isClickedGame1 | isClickedGame2 | isClickedGame3 | isClickedGame4 ? 'none' : 'initial', backgroundColor: 'rgba(33, 52, 72, 1)', alignContent: 'center', width: '100vw', height: '100vh' }}>
         <h1><a>Welcome to NOT Mini-Clip !</a></h1>
         <div className='container-grid'>
           <Container gameName='Alien Shooter III : Remastered' setIsClicked={setIsClickedGame1} />
-          <Container setIsClicked={setIsClickedGame2} />
+          <Container gameName='Chess' setIsClicked={setIsClickedGame2} />
           <Container setIsClicked={setIsClickedGame3} />
           <Container setIsClicked={setIsClickedGame4} />
         </div>
@@ -479,6 +480,19 @@ const PixiCanvas = ({ castContext, characterSkin }) => {
           }}>
           Restart?
         </button>
+      </div>
+
+      <div
+        style={{
+          display: isClickedGame2 ? 'flex' : 'none',
+          justifyContent: 'center',
+          width: 'fit-content',
+          minWidth: '800px',
+          margin: 'auto',
+          border: '5px solid black'
+        }}>
+
+        <ChessCanvas castContext={castContext}></ChessCanvas>
       </div>
     </>
   );

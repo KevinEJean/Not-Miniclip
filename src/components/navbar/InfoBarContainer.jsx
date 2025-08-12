@@ -2,6 +2,7 @@ import showJumpscare from '../util/navbar/Jumpscare.jsx';
 import './InfoBarContainer.css';
 import ChromecastConnection from '../util/navbar/Chromecast.jsx';
 import { MusicUI } from '../util/navbar/Music.jsx';
+import { useState } from 'react';
 
 const InfoBar_PopUp = ({ className = "", setCharacterSkin = "" }) => {
 
@@ -35,6 +36,7 @@ const InfoBar_PopUp = ({ className = "", setCharacterSkin = "" }) => {
   const usrenameHandler = (e) => {
     const username = document.getElementById('username-input').value;
     localStorage.setItem("bestScoreUsername", username);
+    window.location = window.location.href;
   }
 
 
@@ -85,13 +87,23 @@ const InfoBar_PopUp = ({ className = "", setCharacterSkin = "" }) => {
       return <ChromecastConnection />
 
     case "profil":
-      return(
-        <div className="profil-container">
-          <h1 className="profil-label" style={{ color: "black" }}>who are you?</h1>
-          <input id='username-input' className="profil-input" type="text" placeholder='Username displayed with your score...' />
-          <button className="profil-btn" onClick={usrenameHandler}>confirm</button>
-        </div>
-      );
+      if (localStorage.getItem("bestScoreUsername") == null) {
+        return (
+          <div className="profil-container">
+            <h1 className="profil-label" style={{ color: "black" }}>who are you?</h1>
+            <input id='username-input' className="profil-input" type="text" placeholder='Username displayed with your score...' />
+            <button className="profil-btn" onClick={usrenameHandler}>confirm</button>
+          </div>
+        );
+      } else {
+        return (
+          <div className="profil-container">
+            <h1 className="profil-label" style={{ color: "black" }}>Welcome <a>{localStorage.getItem("bestScoreUsername")}</a> !</h1>
+            <input id='username-input' className="profil-input" type="text" placeholder='Change your name here' />
+            <button className="profil-btn" onClick={usrenameHandler}>confirm</button>
+          </div>
+        );
+      }
 
     default:
       return <h1 className="default-message"><a>--- WELCOME ---</a>Click on any tab (left side) to discover its secrets.</h1>;
