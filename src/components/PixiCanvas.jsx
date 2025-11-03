@@ -10,8 +10,8 @@ import ChessCanvas from './ChessCanvas.jsx';
 
 ###################################### TO DO ######################################
 
-- rate updating per kill (works but not how i tought it would?)
-- fix sounds
+- enemy spawn rate updating per kill (works but not how i tought it would?)
+- fix sounds (gun shot, jumpscare after restart)
 
 */
 

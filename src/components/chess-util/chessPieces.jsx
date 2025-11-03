@@ -10,12 +10,12 @@ const pieceImages = {
         king: 'https://upload.wikimedia.org/wikipedia/commons/0/09/Black_King_Xogos_da_Meiga_chess_icons_family.svg',
     },
     white: {
-        pawn: '',
-        rook: '',
-        knight: '',
-        bishop: '',
-        queen: '',
-        king: '',
+        pawn: 'https://upload.wikimedia.org/wikipedia/commons/c/c7/Chess_pdt45.svg',
+        rook: 'https://upload.wikimedia.org/wikipedia/commons/1/11/WHITE_CHESS_ROOK.svg',
+        knight: 'https://upload.wikimedia.org/wikipedia/commons/7/70/WHITE_CHESS_KNIGHT.svg',
+        bishop: 'https://upload.wikimedia.org/wikipedia/commons/1/19/WHITE_CHESS_BISHOP.svg',
+        queen: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/WHITE_CHESS_QUEEN.svg',
+        king: 'https://upload.wikimedia.org/wikipedia/commons/0/09/White_King_Xogos_da_Meiga_chess_icons_family.svg',
     }
 };
 

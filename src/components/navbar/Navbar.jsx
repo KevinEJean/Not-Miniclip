@@ -42,8 +42,8 @@ function Navbar({ setCharacterSkin }) {
         <button onClick={musicHandler}>Music</button>
         <button onClick={feedbackHandler}>Feedback</button>
         <button onClick={customizekHandler}>Customize</button>
-        <button onClick={profilHandler}>Who am I?</button>
-        {/* <button onClick={chromeCastHandler}>Chromecast</button>  */}
+        <button onClick={profilHandler}>Who are you?</button>
+        <button onClick={chromeCastHandler}>Chromecast</button> 
       </div>
       <div className='info-bar'>
         <InfoBar_PopUp className={className} setCharacterSkin={setCharacterSkin} />

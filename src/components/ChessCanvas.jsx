@@ -1,6 +1,6 @@
 import * as PIXI from 'pixi.js';
 import React from 'react';
-import { createChessPiece } from './chess-util/chessPieces';
+import { createChessPiece } from './chess-util/ChessPieces';
 
 const ChessCanvas = ({ castContext }) => {
     const chessCanvasRef = React.useRef(null);

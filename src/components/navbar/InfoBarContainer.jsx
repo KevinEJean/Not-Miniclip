@@ -44,8 +44,8 @@ const InfoBar_PopUp = ({ className = "", setCharacterSkin = "" }) => {
   /* ############ AFFICHAGE ############ */
 
   switch (className) {
-    case "home":
-      return showJumpscare(false);
+    // case "home":
+    //   return showJumpscare(false);
 
     case "help":
       return (

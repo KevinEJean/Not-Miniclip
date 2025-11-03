@@ -25,7 +25,7 @@ function App({ castContext }) {
         <p>
           <strong>
             Copyright 1999-{new Date().getFullYear()} by <a href="https://github.com/KevinEJean" target="_blank">THE ONE AND ONLY</a>. All Rights Reserved.
-            {` ${document.title}`} is powered by my massive intelectual prowess.
+            {` ${document.title}`} is powered by my intelectual prowess.
           </strong>
         </p>
       </div>
