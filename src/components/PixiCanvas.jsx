@@ -272,7 +272,7 @@ const PixiCanvas = ({ castContext, characterSkin }) => {
         champignon.x = position.x; // max.X = 1125, min.X = 80
         champignon.y = position.y; // max.Y = 770, min.Y = 70
         champignon.scale.set(0.18);
-        app.stage.addChild(champignon);
+        // app.stage.addChild(champignon);
       }
     });
 
@@ -285,7 +285,7 @@ const PixiCanvas = ({ castContext, characterSkin }) => {
         tree.x = position.x; // max.X = 1080, min.X = 200
         tree.y = position.y; // max.Y = 730, min.Y = 100
         tree.scale.set(0.05);
-        app.stage.addChild(tree);
+        // app.stage.addChild(tree);
       }
     });
 
@@ -298,7 +298,7 @@ const PixiCanvas = ({ castContext, characterSkin }) => {
         grass.x = position.x; // max.X = 1080, min.X = 40
         grass.y = position.y; // max.Y = 735, min.Y = 25
         grass.scale.set(0.05);
-        app.stage.addChild(grass);
+        // app.stage.addChild(grass);
       }
     });
 

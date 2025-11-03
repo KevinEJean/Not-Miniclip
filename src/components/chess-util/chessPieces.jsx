@@ -24,5 +24,8 @@ export function createChessPiece(color, type, col, row, squareSize = 100) {
     piece.y = row * squareSize + squareSize / 2;
     piece.anchor.set(0.5); // center align piece
 
+    piece.row = row;
+    piece.col = col;
+
     return piece;
 }
