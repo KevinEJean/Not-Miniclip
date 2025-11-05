@@ -2,7 +2,7 @@
     position: absolute;
     width: fit-content;
     height: 100vh;
-    display: flex; 
+    display: flex;
     flex-direction: column;
     justify-content: space-evenly;
 }
@@ -30,7 +30,47 @@
     right: 0;
     margin-right: 15px;
     width: 370px;
-    height: 782.5px;
+    height: fit-content;
+    min-height: 100vh;
+    border: 5px solid black;
+    background-color: #94B4C1;
+}
+
+/* CHESS CONTAINER STYLING */
+
+.navbar-root-chess {
+    position: absolute;
+    width: calc(100vw - 10px);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.navbar-root-chess button {
+    color: #94B4C1;
+    background-color: transparent;
+    font-size: 40px;
+    text-align: left;
+    margin-left: 15px;
+    border: 0;
+    transition: 0.5s;
+}
+
+.navbar-root-chess button:hover {
+    transition: 0.2s;
+    scale: 1.01;
+    text-decoration: underline;
+}
+
+.info-bar-chess {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: 15px;
+    width: 370px;
+    height: fit-content;
+    min-height: 100vh;
     border: 5px solid black;
     background-color: #94B4C1;
 }

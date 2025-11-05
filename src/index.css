@@ -13,6 +13,10 @@ h1 {
   margin-bottom: 20px;
 }
 
+.bestscore {
+  font-size: 30px;
+}
+
 .navbar-footer {
   position: relative;
 }
@@ -56,4 +60,11 @@ h1 {
 
 h1 a {
   animation: colorChange 5s infinite alternate;
+}
+
+.main-layout-grid3x2 {
+  display: grid;
+  grid-template-rows: auto auto auto;
+  grid-template-columns: auto auto;
+  align-items: stretch;
 }

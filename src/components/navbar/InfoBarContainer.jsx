@@ -44,20 +44,36 @@ const InfoBar_PopUp = ({ className = "", setCharacterSkin = "" }) => {
   /* ############ AFFICHAGE ############ */
 
   switch (className) {
-    // case "home":
-    //   return showJumpscare(false);
+    case "home":
+      window.location = '/';
 
     case "help":
       return (
         <div className="flex-column-center-gap">
+          <h1 className="text-black h1-title">HELP MENU</h1>
           <h1 className="text-black h1-large">
-            The objective of this game is to <b className="underline">kill</b> the enemies <b className="text-red">(red squares)</b> before they <b className="text-white">touch the white line.</b>
+            The objective of this game is to <b className="text-red">kill</b> the enemies <b className="underline">(red squares)</b> before they <b className="text-white">touch the white line.</b>
           </h1>
           <h1 className="text-black h1-large">
-            You can change your avatar by clicking on the '<b className="underline">customize tab</b>' on the left!
+            You can change the default avatar by clicking on '<b className="underline">customize</b>'!
           </h1>
           <h1 className="text-black h1-large">
-            If you click on <b className="text-blue">'MUSIC'</b>, you can <b className="underline">add</b> and <b className="underline">remove</b> songs!
+            If you click on '<b className="underline">MUSIC</b>', you can <b className="text-blue">add</b> and <b className="text-red">remove</b> songs!
+          </h1>
+        </div>
+      );
+
+    case "helpChess":
+      return (
+        <div className="flex-column-center-gap">
+          <h1 className="text-black h1-large">
+            The objective of this game is to <b className="text-blue">checkmate</b> your opponent's <b className='text-white'>king</b>, meaning the king is under attack and has <b className="text-red">NO legal moves</b> to escape capture.
+          </h1>
+          <h1 className="text-black h1-large">
+            You can change the image of the squares on the board by clicking on the '<b className="underline">customize tab</b>' on the left!
+          </h1>
+          <h1 className="text-black h1-large">
+            If you click on '<b className="underline">MUSIC</b>', you can <b className="text-blue">add</b> and <b className="text-red">remove</b> songs!
           </h1>
         </div>
       );
@@ -77,7 +93,7 @@ const InfoBar_PopUp = ({ className = "", setCharacterSkin = "" }) => {
     case "customize":
       return (
         <div className="customize-container">
-          <label htmlFor="skinURL" className="customize-label">Click To Change Character Skin</label>
+          <label htmlFor="skinURL" className="customize-label">Click Here To Change Character Skin</label>
           <input id="skinURL" onChange={changeSkin} type="file" />
           <button id="skinCancel" onClick={resetSkin}>Reset Character Skin</button>
         </div>

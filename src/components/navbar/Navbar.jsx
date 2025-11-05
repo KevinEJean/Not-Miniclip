@@ -5,6 +5,7 @@ import { useState } from 'react';
 function Navbar({ setCharacterSkin }) {
 
   const [className, setClassName] = useState("");
+  let pathName = window.location.pathname;
 
   const homeHandler = () => {
     setClassName("home");
@@ -12,6 +13,10 @@ function Navbar({ setCharacterSkin }) {
 
   const helpHandler = () => {
     setClassName("help");
+  }
+
+  const helpHandlerChess = () => {
+    setClassName("helpChess");
   }
 
   const musicHandler = () => {
@@ -26,30 +31,47 @@ function Navbar({ setCharacterSkin }) {
     setClassName("customize");
   }
 
-  const chromeCastHandler = () => {
-    setClassName("chromeCast");
-  }
-
   const profilHandler = () => {
     setClassName("profil");
   }
 
-  return (
-    <>
-      <div className='navbar-root'>
+  const chromeCastHandler = () => {
+    setClassName("chromeCast");
+  }
+
+  if (pathName === '/chess') {
+    return (
+      <div className='navbar-root-chess'>
         <button onClick={homeHandler}>Home</button>
-        <button onClick={helpHandler}>Help</button>
+        <button onClick={helpHandlerChess}>Help</button>
         <button onClick={musicHandler}>Music</button>
         <button onClick={feedbackHandler}>Feedback</button>
         <button onClick={customizekHandler}>Customize</button>
         <button onClick={profilHandler}>Who are you?</button>
-        <button onClick={chromeCastHandler}>Chromecast</button> 
+        <div className='info-bar-chess'>
+          <InfoBar_PopUp className={className} />
+        </div>
       </div>
-      <div className='info-bar'>
-        <InfoBar_PopUp className={className} setCharacterSkin={setCharacterSkin} />
-      </div>
-    </>
-  )
+    );
+  } else {
+
+    return (
+      <>
+        <div className='navbar-root'>
+          <button onClick={homeHandler}>Home</button>
+          <button onClick={helpHandler}>Help</button>
+          <button onClick={musicHandler}>Music</button>
+          <button onClick={feedbackHandler}>Feedback</button>
+          <button onClick={customizekHandler}>Customize</button>
+          <button onClick={profilHandler}>Who are you?</button>
+          <button onClick={chromeCastHandler}>Chromecast</button>
+        </div>
+        <div className='info-bar'>
+          <InfoBar_PopUp className={className} setCharacterSkin={setCharacterSkin} />
+        </div>
+      </>
+    )
+  }
 }
 
 export default Navbar;

@@ -5,6 +5,8 @@ import PixiCanvas from './components/PixiCanvas.jsx';
 import NavBar from './components/navbar/Navbar.jsx';
 import MusicPlayer, { MusicPlayerProvider } from './components/util/navbar/Music.jsx';
 import './index.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import ChessGame from './components/ChessCanvas.jsx';
 
 function App({ castContext }) {
 
@@ -12,23 +14,26 @@ function App({ castContext }) {
 
   return (
     <>
-      <MusicPlayer bypass={false} />
-      <NavBar setCharacterSkin={setCharacterSkin} />
-      <h1
-        className='bestScore'>
-        Current record held by <a>{localStorage.getItem("bestScoreUsername")}</a> : <u>{localStorage.getItem("bestScore")}</u>
-      </h1>
-      <div className='game-canvas'>
-        <PixiCanvas castContext={castContext} characterSkin={characterSkin} />
-      </div>
-      <div className='navbar-footer'>
-        <p>
-          <strong>
-            Copyright 1999-{new Date().getFullYear()} by <a href="https://github.com/KevinEJean" target="_blank">THE ONE AND ONLY</a>. All Rights Reserved.
-            {` ${document.title}`} is powered by my intelectual prowess.
-          </strong>
-        </p>
-      </div>
+      <BrowserRouter>
+        <div className='main-layout-grid3x2'>
+          <MusicPlayer bypass={false} />
+          <NavBar setCharacterSkin={setCharacterSkin} />
+        </div>
+
+        <div className='navbar-footer'>
+          <p>
+            <strong>
+              Copyright 1999-{new Date().getFullYear()} by <a href="https://github.com/KevinEJean" target="_blank">THE ONE AND ONLY</a>. All Rights Reserved.
+              {` ${document.title}`} is powered by my intelectual prowess.
+            </strong>
+          </p>
+        </div>
+
+        <Routes>
+          <Route path='/' element={<PixiCanvas />} />
+          <Route path='/chess' element={<ChessGame />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }

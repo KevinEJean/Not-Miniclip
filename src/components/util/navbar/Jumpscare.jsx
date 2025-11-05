@@ -1,6 +1,4 @@
-import { useRef } from "react";
 
-const jumpscareSound = new Audio('/sounds/jumpscare.mp3');
 let clickCount = 0;
 let flashCount = 0;
 
@@ -8,7 +6,7 @@ const showJumpscare = (bypass) => {
 
     if (bypass) {
         const jumpscareImg = document.createElement('img');
-        jumpscareImg.src = '/jumpscare.jpg';
+        jumpscareImg.src = '/jumpscare.png';
         jumpscareImg.style.position = 'fixed';
         jumpscareImg.style.top = '50%';
         jumpscareImg.style.left = '50%';
@@ -36,9 +34,8 @@ const showJumpscare = (bypass) => {
         clickCount++;
 
         if (clickCount === 3 || clickCount === 5 || clickCount === 9) {
-            jumpscareSound.play();
             const jumpscareImg = document.createElement('img');
-            jumpscareImg.src = '/jumpscare.jpg';
+            jumpscareImg.src = '/jumpscare.png';
             jumpscareImg.style.position = 'fixed';
             jumpscareImg.style.top = '50%';
             jumpscareImg.style.left = '50%';

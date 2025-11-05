@@ -4,7 +4,7 @@ import startTranslations from './util/other/Translations.jsx';
 import './menu/MainMenu.css';
 import Container from './menu/Container.jsx';
 import showJumpscare from './util/navbar/Jumpscare.jsx';
-import ChessCanvas from './ChessCanvas.jsx';
+import { useNavigate } from 'react-router-dom';
 
 /*
 
@@ -25,9 +25,6 @@ const PixiCanvas = ({ castContext, characterSkin }) => {
   const lineRef = React.useRef(null);
   // autre
   const [isClickedGame1, setIsClickedGame1] = React.useState(false);
-  const [isClickedGame2, setIsClickedGame2] = React.useState(false);
-  const [isClickedGame3, setIsClickedGame3] = React.useState(false);
-  const [isClickedGame4, setIsClickedGame4] = React.useState(false);
   const [startText, setStartText] = React.useState('Start');
   const [score, setScore] = React.useState(0);
   // personage
@@ -171,11 +168,11 @@ const PixiCanvas = ({ castContext, characterSkin }) => {
           if (isCollidingWithLine) {
             pixiAppRef.current.stage.removeChild(enemy);
             pixiAppRef.current.ticker.stop();
-            // showJumpscare(true);
+            showJumpscare(true);
             setGameOver(true);
             setEnemySpeed(0);
             clearInterval(enemySpawnInterval);
-            gameOverAudio.play();
+            // gameOverAudio.play();
             // gameOverAudio.pause();
             return false;
           }
@@ -202,8 +199,8 @@ const PixiCanvas = ({ castContext, characterSkin }) => {
       bulletsRef.current.push(bullet);
       app.stage.addChild(bullet);
 
-      shootAudio.play();
-      shootAudio.pause();
+      // shootAudio.play();
+      // shootAudio.pause();
       setCanShoot(false);
       setTimeout(() => setCanShoot(true), 600); // Cooldown
     }
@@ -408,13 +405,16 @@ const PixiCanvas = ({ castContext, characterSkin }) => {
 
   return (
     <>
-      <div id='menu-root' style={{ display: isClickedGame1 | isClickedGame2 | isClickedGame3 | isClickedGame4 ? 'none' : 'initial', backgroundColor: 'rgba(33, 52, 72, 1)', alignContent: 'center', width: '100vw', height: '100vh' }}>
+      <div id='menu-root' style={{ display: isClickedGame1 ? 'none' : 'initial', backgroundColor: 'rgba(33, 52, 72, 1)', alignContent: 'center', width: '100vw', height: '100vh' }}>
+        <h1 className='bestScore' style={{ fontSize: '30px', color: '#94B4C1', margin: 0, marginTop: '20px' }}>
+          Current record held by <a>{localStorage.getItem("bestScoreUsername")}</a> : <u>{localStorage.getItem("bestScore")}</u>
+        </h1>
         <h1><a>Welcome to NOT Mini-Clip !</a></h1>
         <div className='container-grid'>
           <Container gameName='Alien Shooter III : Remastered' setIsClicked={setIsClickedGame1} />
-          <Container gameName='Chess' setIsClicked={setIsClickedGame2} />
-          <Container setIsClicked={setIsClickedGame3} />
-          <Container setIsClicked={setIsClickedGame4} />
+          <Container gameName='Chess' />
+          <Container gameName='Coming Soon!' />
+          <Container gameName='Coming Soon!' />
         </div>
       </div>
 
@@ -480,19 +480,6 @@ const PixiCanvas = ({ castContext, characterSkin }) => {
           }}>
           Restart?
         </button>
-      </div>
-
-      <div
-        style={{
-          display: isClickedGame2 ? 'flex' : 'none',
-          justifyContent: 'center',
-          width: 'fit-content',
-          minWidth: '800px',
-          margin: 'auto',
-          border: '5px solid black'
-        }}>
-
-        <ChessCanvas castContext={castContext}></ChessCanvas>
       </div>
     </>
   );
